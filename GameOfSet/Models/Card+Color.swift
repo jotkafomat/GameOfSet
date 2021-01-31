@@ -15,3 +15,5 @@ extension Card {
         case purple
     }
 }
+
+extension Card.Color: CaseIterable {}

@@ -15,3 +15,5 @@ extension Card {
         case oval
     }
 }
+
+extension Card.Shape: CaseIterable {}

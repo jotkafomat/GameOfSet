@@ -15,3 +15,4 @@ extension Card {
         case open
     }
 }
+extension Card.Shading: CaseIterable {}

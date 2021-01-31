@@ -15,3 +15,5 @@ extension Card {
         case three
     }
 }
+
+extension Card.Number: CaseIterable {}
