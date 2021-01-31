@@ -18,6 +18,8 @@
 		E1910E7925C6D97500D30667 /* Card+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E7825C6D97500D30667 /* Card+Color.swift */; };
 		E1910E7E25C6D9A100D30667 /* Card+Shading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E7D25C6D9A100D30667 /* Card+Shading.swift */; };
 		E1910E8325C6DA5F00D30667 /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E8225C6DA5F00D30667 /* CardTests.swift */; };
+		E1910E8B25C6E3A600D30667 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E8A25C6E3A600D30667 /* GameEngine.swift */; };
+		E1910E9325C6E46400D30667 /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E9225C6E46400D30667 /* GameEngineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		E1910E7825C6D97500D30667 /* Card+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Color.swift"; sourceTree = "<group>"; };
 		E1910E7D25C6D9A100D30667 /* Card+Shading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Shading.swift"; sourceTree = "<group>"; };
 		E1910E8225C6DA5F00D30667 /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
+		E1910E8A25C6E3A600D30667 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		E1910E9225C6E46400D30667 /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			children = (
 				E1910E3725C6D60700D30667 /* GameOfSetApp.swift */,
 				E1910E3925C6D60700D30667 /* ContentView.swift */,
+				E1910E8A25C6E3A600D30667 /* GameEngine.swift */,
 				E1910E6A25C6D8E000D30667 /* Models */,
 				E1910E3B25C6D60A00D30667 /* Assets.xcassets */,
 				E1910E4025C6D60A00D30667 /* Info.plist */,
@@ -128,6 +133,7 @@
 			children = (
 				E1910E8225C6DA5F00D30667 /* CardTests.swift */,
 				E1910E4B25C6D60A00D30667 /* Info.plist */,
+				E1910E9225C6E46400D30667 /* GameEngineTests.swift */,
 			);
 			path = GameOfSetTests;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				E1910E3A25C6D60700D30667 /* ContentView.swift in Sources */,
 				E1910E7E25C6D9A100D30667 /* Card+Shading.swift in Sources */,
 				E1910E7925C6D97500D30667 /* Card+Color.swift in Sources */,
+				E1910E8B25C6E3A600D30667 /* GameEngine.swift in Sources */,
 				E1910E6F25C6D8F900D30667 /* Card+Shape.swift in Sources */,
 				E1910E7425C6D93400D30667 /* Card+Number.swift in Sources */,
 				E1910E6625C6D8CB00D30667 /* Card.swift in Sources */,
@@ -297,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1910E8325C6DA5F00D30667 /* CardTests.swift in Sources */,
+				E1910E9325C6E46400D30667 /* GameEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@ struct Card {
     let number: Number
     let color: Color
     let shading: Shading
+    var isDealt: Bool = false
     
     static var newDeck: [Card] {
         var deck = [Card]()
