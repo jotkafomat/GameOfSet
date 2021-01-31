@@ -13,6 +13,11 @@
 		E1910E3F25C6D60A00D30667 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1910E3E25C6D60A00D30667 /* Preview Assets.xcassets */; };
 		E1910E4A25C6D60A00D30667 /* GameOfSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E4925C6D60A00D30667 /* GameOfSetTests.swift */; };
 		E1910E5525C6D60A00D30667 /* GameOfSetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E5425C6D60A00D30667 /* GameOfSetUITests.swift */; };
+		E1910E6625C6D8CB00D30667 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E6525C6D8CB00D30667 /* Card.swift */; };
+		E1910E6F25C6D8F900D30667 /* Card+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E6E25C6D8F900D30667 /* Card+Shape.swift */; };
+		E1910E7425C6D93400D30667 /* Card+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E7325C6D93400D30667 /* Card+Number.swift */; };
+		E1910E7925C6D97500D30667 /* Card+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E7825C6D97500D30667 /* Card+Color.swift */; };
+		E1910E7E25C6D9A100D30667 /* Card+Shading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E7D25C6D9A100D30667 /* Card+Shading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		E1910E5025C6D60A00D30667 /* GameOfSetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfSetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1910E5425C6D60A00D30667 /* GameOfSetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfSetUITests.swift; sourceTree = "<group>"; };
 		E1910E5625C6D60A00D30667 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1910E6525C6D8CB00D30667 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E1910E6E25C6D8F900D30667 /* Card+Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Shape.swift"; sourceTree = "<group>"; };
+		E1910E7325C6D93400D30667 /* Card+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Number.swift"; sourceTree = "<group>"; };
+		E1910E7825C6D97500D30667 /* Card+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Color.swift"; sourceTree = "<group>"; };
+		E1910E7D25C6D9A100D30667 /* Card+Shading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Shading.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 			children = (
 				E1910E3725C6D60700D30667 /* GameOfSetApp.swift */,
 				E1910E3925C6D60700D30667 /* ContentView.swift */,
+				E1910E6A25C6D8E000D30667 /* Models */,
 				E1910E3B25C6D60A00D30667 /* Assets.xcassets */,
 				E1910E4025C6D60A00D30667 /* Info.plist */,
 				E1910E3D25C6D60A00D30667 /* Preview Content */,
@@ -128,6 +139,18 @@
 				E1910E5625C6D60A00D30667 /* Info.plist */,
 			);
 			path = GameOfSetUITests;
+			sourceTree = "<group>";
+		};
+		E1910E6A25C6D8E000D30667 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1910E6525C6D8CB00D30667 /* Card.swift */,
+				E1910E6E25C6D8F900D30667 /* Card+Shape.swift */,
+				E1910E7325C6D93400D30667 /* Card+Number.swift */,
+				E1910E7825C6D97500D30667 /* Card+Color.swift */,
+				E1910E7D25C6D9A100D30667 /* Card+Shading.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1910E3A25C6D60700D30667 /* ContentView.swift in Sources */,
+				E1910E7E25C6D9A100D30667 /* Card+Shading.swift in Sources */,
+				E1910E7925C6D97500D30667 /* Card+Color.swift in Sources */,
+				E1910E6F25C6D8F900D30667 /* Card+Shape.swift in Sources */,
+				E1910E7425C6D93400D30667 /* Card+Number.swift in Sources */,
+				E1910E6625C6D8CB00D30667 /* Card.swift in Sources */,
 				E1910E3825C6D60700D30667 /* GameOfSetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
