@@ -33,7 +33,7 @@ class GameEngine: ObservableObject {
             return
         }
         var selectedCard = allCards[selectedIndex]
-        selectedCard.isSelected = true
+        selectedCard.isSelected.toggle()
         allCards[selectedIndex] = selectedCard
     }
     
