@@ -23,6 +23,12 @@ class GameEngine: ObservableObject {
     }
     
     public func select(_ card: Card) {
+        
+        guard allCards.filter({ $0.isSelected}).count < 3 else {
+            //TODO: check if selected form set
+            return
+        }
+        
         guard let selectedIndex = allCards.firstIndex(of: card) else {
             return
         }
