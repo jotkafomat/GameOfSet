@@ -19,4 +19,15 @@ class GameEngineTests: XCTestCase {
         XCTAssertEqual(subject.dealtCards.count, 12)
     }
     
+    func testSelectCard() throws {
+        let subject = GameEngine()
+        subject.startGame()
+        
+        let card = try XCTUnwrap(subject.dealtCards.first)
+        XCTAssertFalse(card.isSelected)
+        
+        subject.select(card)
+        XCTAssertTrue(subject.dealtCards.first!.isSelected)
+    }
+    
 }

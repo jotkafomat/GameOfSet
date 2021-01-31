@@ -22,6 +22,15 @@ class GameEngine: ObservableObject {
         }
     }
     
+    public func select(_ card: Card) {
+        guard let selectedIndex = allCards.firstIndex(of: card) else {
+            return
+        }
+        var selectedCard = allCards[selectedIndex]
+        selectedCard.isSelected = true
+        allCards[selectedIndex] = selectedCard
+    }
+    
     private func dealSingleCard() {
         guard let randomIndex = allCards.indices.randomElement() else {
             return
