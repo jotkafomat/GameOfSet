@@ -10,7 +10,11 @@ import Combine
 
 class GameEngine: ObservableObject {
     
-    private var allCards = Card.newDeck
+    private var allCards: [Card]
+    
+    public init(allCards: [Card] = Card.newDeck) {
+        self.allCards = allCards
+    }
     
     public var dealtCards: [Card] {
         allCards.filter { $0.isDealt }
@@ -24,8 +28,7 @@ class GameEngine: ObservableObject {
     
     public func select(_ card: Card) {
         
-        guard allCards.filter({ $0.isSelected}).count < 3 else {
-            //TODO: check if selected form set
+        guard selectedCards.count < 3 else {
             return
         }
         
@@ -35,6 +38,18 @@ class GameEngine: ObservableObject {
         var selectedCard = allCards[selectedIndex]
         selectedCard.isSelected.toggle()
         allCards[selectedIndex] = selectedCard
+        
+        if selectedCards.areValidSet {
+            for card in selectedCards {
+                guard let matchedIndex = allCards.firstIndex(of: card) else {
+                    return
+                }
+        
+                var matchedCard = allCards[matchedIndex]
+                matchedCard.isMatched = true
+                allCards[matchedIndex] = matchedCard
+            }
+        }
     }
     
     private func dealSingleCard() {
@@ -44,5 +59,9 @@ class GameEngine: ObservableObject {
         var randomCard = allCards[randomIndex]
         randomCard.isDealt = true
         allCards[randomIndex] = randomCard
+    }
+    
+    private var selectedCards: [Card] {
+        allCards.filter({ $0.isSelected})
     }
 }

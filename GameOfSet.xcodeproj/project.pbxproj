@@ -20,6 +20,7 @@
 		E1910E8325C6DA5F00D30667 /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E8225C6DA5F00D30667 /* CardTests.swift */; };
 		E1910E8B25C6E3A600D30667 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E8A25C6E3A600D30667 /* GameEngine.swift */; };
 		E1910E9325C6E46400D30667 /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E9225C6E46400D30667 /* GameEngineTests.swift */; };
+		E1FC1DDA25C896C1006FABAA /* Array+Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC1DD925C896C1006FABAA /* Array+Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		E1910E8225C6DA5F00D30667 /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		E1910E8A25C6E3A600D30667 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		E1910E9225C6E46400D30667 /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
+		E1FC1DD925C896C1006FABAA /* Array+Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Card.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				E1910E7325C6D93400D30667 /* Card+Number.swift */,
 				E1910E7825C6D97500D30667 /* Card+Color.swift */,
 				E1910E7D25C6D9A100D30667 /* Card+Shading.swift */,
+				E1FC1DD925C896C1006FABAA /* Array+Card.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1910E3A25C6D60700D30667 /* ContentView.swift in Sources */,
+				E1FC1DDA25C896C1006FABAA /* Array+Card.swift in Sources */,
 				E1910E7E25C6D9A100D30667 /* Card+Shading.swift in Sources */,
 				E1910E7925C6D97500D30667 /* Card+Color.swift in Sources */,
 				E1910E8B25C6E3A600D30667 /* GameEngine.swift in Sources */,

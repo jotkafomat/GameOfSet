@@ -15,6 +15,7 @@ struct Card {
     let shading: Shading
     var isDealt: Bool = false
     var isSelected: Bool = false
+    var isMatched: Bool = false
     
     static var newDeck: [Card] {
         var deck = [Card]()
