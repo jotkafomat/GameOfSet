@@ -33,6 +33,13 @@ struct Card {
         }
         return deck
     }
+    
+    func matches(_ other: Card) -> Bool {
+        color == other.color &&
+            shape == other.shape &&
+            number == other.number &&
+            shading == other.shading
+    }
 }
 
 extension Card: Hashable {}

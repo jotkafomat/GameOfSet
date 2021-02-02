@@ -37,22 +37,6 @@ class GameEngineTests: XCTestCase {
         XCTAssertTrue(subject.dealtCards.first!.isSelected)
     }
     
-    func testCanSelectUpTo3Cards() {
-        subject.startGame()
-        
-        //select 3 cards
-        subject.select(subject.dealtCards[0])
-        subject.select(subject.dealtCards[3])
-        subject.select(subject.dealtCards[7])
-        
-        //atempt selecting 4th card
-        let card4 = subject.dealtCards[11]
-        subject.select(card4)
-        XCTAssertEqual(subject.dealtCards.filter({ $0.isSelected }).count, 3)
-        XCTAssertFalse(subject.dealtCards.filter({ $0.isSelected }).contains(card4))
-        XCTAssertFalse(subject.dealtCards[11].isSelected)
-    }
-    
     func testDeselectionWorksWhenLessThan3CardsSelected() {
         subject.startGame()
         
@@ -68,25 +52,7 @@ class GameEngineTests: XCTestCase {
         XCTAssertFalse(subject.dealtCards[0].isSelected)
         XCTAssertFalse(subject.dealtCards[3].isSelected)
     }
-    
-    
-    func testDeselectionImpossibleWith3CardsSelected() {
-        subject.startGame()
-        
-        //select 2 cards
-        subject.select(subject.dealtCards[0])
-        subject.select(subject.dealtCards[3])
-        subject.select(subject.dealtCards[7])
-        XCTAssertTrue(subject.dealtCards[0].isSelected)
-        XCTAssertTrue(subject.dealtCards[3].isSelected)
-        XCTAssertTrue(subject.dealtCards[7].isSelected)
-        // attempt to deselect selected card
-        subject.select(subject.dealtCards[0])
-        //all cards are still selected
-        XCTAssertTrue(subject.dealtCards[0].isSelected)
-        XCTAssertTrue(subject.dealtCards[3].isSelected)
-        XCTAssertTrue(subject.dealtCards[7].isSelected)
-    }
+
     
     func testMatchingCardsAllDiffrentProperties() throws {
         
@@ -166,6 +132,49 @@ class GameEngineTests: XCTestCase {
         
     }
     
+    func testDeselectAllSelectedWhenFourthCardSelected() {
+        subject.startGame()
+        
+        //select 3 cards
+        subject.select(subject.dealtCards[0])
+        subject.select(subject.dealtCards[3])
+        subject.select(subject.dealtCards[7])
+        //select 4th
+        subject.select(subject.dealtCards[2])
+        
+        //initial 3 are deselected
+        XCTAssertFalse(subject.dealtCards[0].isSelected)
+        XCTAssertFalse(subject.dealtCards[3].isSelected)
+        XCTAssertFalse(subject.dealtCards[7].isSelected)
+        //4th is selected
+        XCTAssertTrue(subject.dealtCards[2].isSelected)
+    }
+    
+    func testDeselectAllSelectedWhenOneSelectedAgain() {
+        subject.startGame()
+        
+        //select 3 cards
+        subject.select(subject.dealtCards[0])
+        subject.select(subject.dealtCards[3])
+        subject.select(subject.dealtCards[7])
+        //select one again
+        subject.select(subject.dealtCards[3])
+        
+        //2 get deselected
+        XCTAssertFalse(subject.dealtCards[0].isSelected)
+        XCTAssertFalse(subject.dealtCards[7].isSelected)
+        //one selected again stays selected
+        XCTAssertTrue(subject.dealtCards[3].isSelected)
+    }
+    
+    //GIVEN: there are 3 non matching cards slected
+    //WHEN: I tap one card deselct all and select this one (one of the 3 another one)
+    
+    //GIVEN: there are 3 matching cards selected
+    //WHEN: I tap one card deselct all, remove matchin, select this one (if if it's not one of matching)
+    //AND: deal extra 3 cacrds (if avaible)
+    
+    
     private func prepareDeck(with cards: [Card]) -> [Card] {
         var deck = Card.newDeck
         //remove the 3 matching cards
@@ -175,15 +184,5 @@ class GameEngineTests: XCTestCase {
         // add the 3 matching cards
         deck.append(contentsOf: cards)
         return deck
-    }
-}
-
-extension Card {
-    
-    func matches(_ other: Card) -> Bool {
-        color == other.color &&
-            shape == other.shape &&
-            number == other.number &&
-            shading == other.shading
     }
 }

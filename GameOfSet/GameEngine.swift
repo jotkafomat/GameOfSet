@@ -28,11 +28,15 @@ class GameEngine: ObservableObject {
     
     public func select(_ card: Card) {
         
-        guard selectedCards.count < 3 else {
-            return
+        if selectedCards.count > 2 {
+            for index in allCards.indices {
+                allCards[index].isSelected = false
+            }
+            // remove all matched
+            // deal 3 cards if avaible
         }
         
-        guard let selectedIndex = allCards.firstIndex(of: card) else {
+        guard let selectedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
             return
         }
         var selectedCard = allCards[selectedIndex]
@@ -41,7 +45,7 @@ class GameEngine: ObservableObject {
         
         if selectedCards.areValidSet {
             for card in selectedCards {
-                guard let matchedIndex = allCards.firstIndex(of: card) else {
+                guard let matchedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
                     return
                 }
         
