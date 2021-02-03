@@ -167,8 +167,33 @@ class GameEngineTests: XCTestCase {
         XCTAssertTrue(subject.dealtCards[3].isSelected)
     }
     
-    //GIVEN: there are 3 non matching cards slected
-    //WHEN: I tap one card deselct all and select this one (one of the 3 another one)
+    func testMatchingCardsGetRemovenWhenNextCardSelected() throws {
+        
+        //three matching cards
+        let card1 = Card(shape: .diamond, number: .one, color: .red, shading: .open, isDealt: true)
+        let card2 = Card(shape: .diamond, number: .two, color: .red, shading: .solid, isDealt: true)
+        let card3 = Card(shape: .diamond, number: .three, color: .red, shading: .striped, isDealt: true)
+        
+        let deck = prepareDeck(with: [card1, card2, card3])
+        
+        let subject = GameEngine(allCards: deck)
+        
+        subject.startGame()
+        
+        //select 3 macthing cards
+        subject.select(card1)
+        subject.select(card2)
+        subject.select(card3)
+        
+        //tap on new card
+        let nextCard = try XCTUnwrap(subject.dealtCards.first(where: { ![card1, card2, card3].contains($0) }))
+        subject.select(nextCard)
+        
+        //ensure matched cards were removed
+        XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card1)}))
+        XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card2)}))
+        XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card3)}))
+    }
     
     //GIVEN: there are 3 matching cards selected
     //WHEN: I tap one card deselct all, remove matchin, select this one (if if it's not one of matching)
@@ -178,11 +203,14 @@ class GameEngineTests: XCTestCase {
     private func prepareDeck(with cards: [Card]) -> [Card] {
         var deck = Card.newDeck
         //remove the 3 matching cards
-        deck.removeAll(where: { cards.contains($0)})
-        //chose first 9 cards
+        for card in cards {
+            deck.removeAll(where: { $0.matches(card)})
+        }
+        //kepp only first 9 cards
         deck = Array(deck.prefix(9))
         // add the 3 matching cards
         deck.append(contentsOf: cards)
+        // return 12 cards including
         return deck
     }
 }

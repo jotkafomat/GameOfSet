@@ -33,6 +33,7 @@ class GameEngine: ObservableObject {
                 allCards[index].isSelected = false
             }
             // remove all matched
+            allCards.removeAll(where: { $0.isMatched })
             // deal 3 cards if avaible
         }
         
