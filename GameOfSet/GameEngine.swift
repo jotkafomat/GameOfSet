@@ -21,9 +21,7 @@ class GameEngine: ObservableObject {
     }
     
     public func startGame() {
-        while dealtCards.count != 12 {
-            dealSingleCard()
-        }
+        topUpDealtCardsTo12()
     }
     
     public func select(_ card: Card) {
@@ -35,6 +33,7 @@ class GameEngine: ObservableObject {
             // remove all matched
             allCards.removeAll(where: { $0.isMatched })
             // deal 3 cards if avaible
+            topUpDealtCardsTo12()
         }
         
         guard let selectedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
@@ -49,11 +48,19 @@ class GameEngine: ObservableObject {
                 guard let matchedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
                     return
                 }
-        
                 var matchedCard = allCards[matchedIndex]
                 matchedCard.isMatched = true
                 allCards[matchedIndex] = matchedCard
             }
+        }
+    }
+    
+    private func topUpDealtCardsTo12() {
+        guard !allCards.filter({ !$0.isDealt }).isEmpty else {
+            return
+        }
+        while dealtCards.count != 12 {
+            dealSingleCard()
         }
     }
     

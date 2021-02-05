@@ -61,7 +61,7 @@ class GameEngineTests: XCTestCase {
         let card2 = Card(shape: .oval, number: .two, color: .green, shading: .solid, isDealt: true)
         let card3 = Card(shape: .squiggle, number: .three, color: .purple, shading: .striped, isDealt: true)
         
-        let deck = prepareDeck(with: [card1, card2, card3])
+        let deck = prepareDeck(including: [card1, card2, card3])
         
         let subject = GameEngine(allCards: deck)
         
@@ -87,7 +87,7 @@ class GameEngineTests: XCTestCase {
         let card2 = Card(shape: .oval, number: .two, color: .green, shading: .solid, isDealt: true)
         let card3 = Card(shape: .diamond, number: .three, color: .purple, shading: .striped, isDealt: true)
         
-        let deck = prepareDeck(with: [card1, card2, card3])
+        let deck = prepareDeck(including: [card1, card2, card3])
         
         let subject = GameEngine(allCards: deck)
         
@@ -113,7 +113,7 @@ class GameEngineTests: XCTestCase {
         let card2 = Card(shape: .diamond, number: .two, color: .red, shading: .solid, isDealt: true)
         let card3 = Card(shape: .diamond, number: .three, color: .red, shading: .striped, isDealt: true)
         
-        let deck = prepareDeck(with: [card1, card2, card3])
+        let deck = prepareDeck(including: [card1, card2, card3])
         
         let subject = GameEngine(allCards: deck)
         
@@ -174,7 +174,7 @@ class GameEngineTests: XCTestCase {
         let card2 = Card(shape: .diamond, number: .two, color: .red, shading: .solid, isDealt: true)
         let card3 = Card(shape: .diamond, number: .three, color: .red, shading: .striped, isDealt: true)
         
-        let deck = prepareDeck(with: [card1, card2, card3])
+        let deck = prepareDeck(including: [card1, card2, card3])
         
         let subject = GameEngine(allCards: deck)
         
@@ -194,23 +194,68 @@ class GameEngineTests: XCTestCase {
         XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card2)}))
         XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card3)}))
     }
+
     
-    //GIVEN: there are 3 matching cards selected
-    //WHEN: I tap one card deselct all, remove matchin, select this one (if if it's not one of matching)
-    //AND: deal extra 3 cacrds (if avaible)
+    func testDealExtraThreeCardsAfterMatch() throws {
+        //three matching cards
+        let card1 = Card(shape: .diamond, number: .one, color: .red, shading: .open, isDealt: true)
+        let card2 = Card(shape: .diamond, number: .two, color: .red, shading: .solid, isDealt: true)
+        let card3 = Card(shape: .diamond, number: .three, color: .red, shading: .striped, isDealt: true)
+        
+        let deck = prepareDeck(of: 15, including: [card1, card2, card3])
+        
+        let subject = GameEngine(allCards: deck)
+        
+        subject.startGame()
+        
+        //select 3 macthing cards
+        subject.select(card1)
+        subject.select(card2)
+        subject.select(card3)
+        
+        //tap on new card
+        let nextCard = try XCTUnwrap(subject.dealtCards.first(where: { ![card1, card2, card3].contains($0) }))
+        subject.select(nextCard)
+        
+        XCTAssertEqual(subject.dealtCards.count, 12)
+    }
+    
+    func testDonotDealExtraThreeCardsAfterMatchIfNoneLeft() throws {
+        //three matching cards
+        let card1 = Card(shape: .diamond, number: .one, color: .red, shading: .open, isDealt: true)
+        let card2 = Card(shape: .diamond, number: .two, color: .red, shading: .solid, isDealt: true)
+        let card3 = Card(shape: .diamond, number: .three, color: .red, shading: .striped, isDealt: true)
+        
+        let deck = prepareDeck(including: [card1, card2, card3])
+        
+        let subject = GameEngine(allCards: deck)
+        
+        subject.startGame()
+        
+        //select 3 macthing cards
+        subject.select(card1)
+        subject.select(card2)
+        subject.select(card3)
+        
+        //tap on new card
+        let nextCard = try XCTUnwrap(subject.dealtCards.first(where: { ![card1, card2, card3].contains($0) }))
+        subject.select(nextCard)
+        
+        XCTAssertEqual(subject.dealtCards.count, 9)
+    }
     
     
-    private func prepareDeck(with cards: [Card]) -> [Card] {
+    private func prepareDeck(of number: Int = 12, including cards: [Card]) -> [Card] {
         var deck = Card.newDeck
         //remove the 3 matching cards
         for card in cards {
             deck.removeAll(where: { $0.matches(card)})
         }
-        //kepp only first 9 cards
-        deck = Array(deck.prefix(9))
+        //keep only first X cards
+        deck = Array(deck.prefix(number - cards.count))
         // add the 3 matching cards
         deck.append(contentsOf: cards)
-        // return 12 cards including
+        // return (number) cards including
         return deck
     }
 }

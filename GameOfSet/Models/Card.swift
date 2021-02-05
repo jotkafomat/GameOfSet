@@ -17,6 +17,7 @@ struct Card {
     var isSelected: Bool = false
     var isMatched: Bool = false
     
+    //array of all 81 unique cards
     static var newDeck: [Card] {
         var deck = [Card]()
         for shape in Shape.allCases {
