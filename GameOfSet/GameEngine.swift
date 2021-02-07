@@ -28,35 +28,39 @@ class GameEngine: ObservableObject {
         topUpDealtCardsTo12()
     }
     
-    public func select(_ card: Card) {
+    public func touch(_ card: Card) {
         
         if selectedCards.count > 2 {
-            for index in allCards.indices {
-                allCards[index].isSelected = false
-            }
-            // remove all matched
-            allCards.removeAll(where: { $0.isMatched })
+            deselectAllCards()
+            removeAllMatched()
             // deal 3 cards if avaible
             topUpDealtCardsTo12()
         }
         
-        guard let selectedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
+        toggleIsSelected(card)
+        markIfMatched()
+    }
+    
+    private func markIfMatched() {
+        guard selectedCards.areValidSet else {
             return
         }
-        var selectedCard = allCards[selectedIndex]
-        selectedCard.isSelected.toggle()
-        allCards[selectedIndex] = selectedCard
-        
-        if selectedCards.areValidSet {
-            for card in selectedCards {
-                guard let matchedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
-                    return
-                }
-                var matchedCard = allCards[matchedIndex]
-                matchedCard.isMatched = true
-                allCards[matchedIndex] = matchedCard
+        for card in selectedCards {
+            guard let matchedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
+                return
             }
+            allCards[matchedIndex].isMatched = true
         }
+    }
+    
+    private func deselectAllCards() {
+        for index in allCards.indices {
+            allCards[index].isSelected = false
+        }
+    }
+    
+    private func removeAllMatched() {
+        allCards.removeAll(where: { $0.isMatched })
     }
     
     private func topUpDealtCardsTo12() {
@@ -68,13 +72,18 @@ class GameEngine: ObservableObject {
         }
     }
     
+    private func toggleIsSelected(_ card: Card) {
+        guard let selectedIndex = allCards.firstIndex(where: { card.matches($0) }) else {
+            return
+        }
+        allCards[selectedIndex].isSelected.toggle()
+    }
+    
     private func dealSingleCard() {
         guard let randomIndex = allCards.indices.randomElement() else {
             return
         }
-        var randomCard = allCards[randomIndex]
-        randomCard.isDealt = true
-        allCards[randomIndex] = randomCard
+        allCards[randomIndex].isDealt = true
     }
     
     private var selectedCards: [Card] {

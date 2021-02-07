@@ -33,7 +33,7 @@ class GameEngineTests: XCTestCase {
         let card = try XCTUnwrap(subject.dealtCards.first)
         XCTAssertFalse(card.isSelected)
         
-        subject.select(card)
+        subject.touch(card)
         XCTAssertTrue(subject.dealtCards.first!.isSelected)
     }
     
@@ -41,13 +41,13 @@ class GameEngineTests: XCTestCase {
         subject.startGame()
         
         //select 2 cards
-        subject.select(subject.dealtCards[0])
-        subject.select(subject.dealtCards[3])
+        subject.touch(subject.dealtCards[0])
+        subject.touch(subject.dealtCards[3])
         XCTAssertTrue(subject.dealtCards[0].isSelected)
         XCTAssertTrue(subject.dealtCards[3].isSelected)
         // deselect the same cards
-        subject.select(subject.dealtCards[0])
-        subject.select(subject.dealtCards[3])
+        subject.touch(subject.dealtCards[0])
+        subject.touch(subject.dealtCards[3])
         
         XCTAssertFalse(subject.dealtCards[0].isSelected)
         XCTAssertFalse(subject.dealtCards[3].isSelected)
@@ -67,9 +67,9 @@ class GameEngineTests: XCTestCase {
         
         subject.startGame()
         
-        subject.select(card1)
-        subject.select(card2)
-        subject.select(card3)
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
         
         let new1 = try XCTUnwrap(subject.dealtCards.first(where: { $0.matches(card1)}))
         let new2 = try XCTUnwrap(subject.dealtCards.first(where: { $0.matches(card2)}))
@@ -93,9 +93,9 @@ class GameEngineTests: XCTestCase {
         
         subject.startGame()
         
-        subject.select(card1)
-        subject.select(card2)
-        subject.select(card3)
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
         
         let new1 = try XCTUnwrap(subject.dealtCards.first(where: { $0.matches(card1)}))
         let new2 = try XCTUnwrap(subject.dealtCards.first(where: { $0.matches(card2)}))
@@ -119,9 +119,9 @@ class GameEngineTests: XCTestCase {
         
         subject.startGame()
         
-        subject.select(card1)
-        subject.select(card2)
-        subject.select(card3)
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
         
         let new1 = try XCTUnwrap(subject.dealtCards.first(where: { $0.matches(card1)}))
         let new2 = try XCTUnwrap(subject.dealtCards.first(where: { $0.matches(card2)}))
@@ -136,11 +136,11 @@ class GameEngineTests: XCTestCase {
         subject.startGame()
         
         //select 3 cards
-        subject.select(subject.dealtCards[0])
-        subject.select(subject.dealtCards[3])
-        subject.select(subject.dealtCards[7])
+        subject.touch(subject.dealtCards[0])
+        subject.touch(subject.dealtCards[3])
+        subject.touch(subject.dealtCards[7])
         //select 4th
-        subject.select(subject.dealtCards[2])
+        subject.touch(subject.dealtCards[2])
         
         //initial 3 are deselected
         XCTAssertFalse(subject.dealtCards[0].isSelected)
@@ -154,11 +154,11 @@ class GameEngineTests: XCTestCase {
         subject.startGame()
         
         //select 3 cards
-        subject.select(subject.dealtCards[0])
-        subject.select(subject.dealtCards[3])
-        subject.select(subject.dealtCards[7])
+        subject.touch(subject.dealtCards[0])
+        subject.touch(subject.dealtCards[3])
+        subject.touch(subject.dealtCards[7])
         //select one again
-        subject.select(subject.dealtCards[3])
+        subject.touch(subject.dealtCards[3])
         
         //2 get deselected
         XCTAssertFalse(subject.dealtCards[0].isSelected)
@@ -181,13 +181,13 @@ class GameEngineTests: XCTestCase {
         subject.startGame()
         
         //select 3 macthing cards
-        subject.select(card1)
-        subject.select(card2)
-        subject.select(card3)
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
         
         //tap on new card
         let nextCard = try XCTUnwrap(subject.dealtCards.first(where: { ![card1, card2, card3].contains($0) }))
-        subject.select(nextCard)
+        subject.touch(nextCard)
         
         //ensure matched cards were removed
         XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card1)}))
@@ -209,13 +209,13 @@ class GameEngineTests: XCTestCase {
         subject.startGame()
         
         //select 3 macthing cards
-        subject.select(card1)
-        subject.select(card2)
-        subject.select(card3)
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
         
         //tap on new card
         let nextCard = try XCTUnwrap(subject.dealtCards.first(where: { ![card1, card2, card3].contains($0) }))
-        subject.select(nextCard)
+        subject.touch(nextCard)
         
         XCTAssertEqual(subject.dealtCards.count, 12)
     }
@@ -233,13 +233,13 @@ class GameEngineTests: XCTestCase {
         subject.startGame()
         
         //select 3 macthing cards
-        subject.select(card1)
-        subject.select(card2)
-        subject.select(card3)
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
         
         //tap on new card
         let nextCard = try XCTUnwrap(subject.dealtCards.first(where: { ![card1, card2, card3].contains($0) }))
-        subject.select(nextCard)
+        subject.touch(nextCard)
         
         XCTAssertEqual(subject.dealtCards.count, 9)
     }
