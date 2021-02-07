@@ -20,6 +20,10 @@ class GameEngine: ObservableObject {
         allCards.filter { $0.isDealt }
     }
     
+    public var canDealMoreCards: Bool {
+        allCards.filter({ !$0.isDealt }).isNotEmpty
+    }
+    
     public func startGame() {
         topUpDealtCardsTo12()
     }
@@ -56,7 +60,7 @@ class GameEngine: ObservableObject {
     }
     
     private func topUpDealtCardsTo12() {
-        guard !allCards.filter({ !$0.isDealt }).isEmpty else {
+        guard canDealMoreCards else {
             return
         }
         while dealtCards.count != 12 {

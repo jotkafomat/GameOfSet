@@ -244,6 +244,25 @@ class GameEngineTests: XCTestCase {
         XCTAssertEqual(subject.dealtCards.count, 9)
     }
     
+    func testCanDealMoreCardsisFalseWhenThereAreNoCardsToDeal() {
+        // Given a deck of 12 cards
+        let deck = prepareDeck(including: [Card]())
+        //start game
+        let subject = GameEngine(allCards: deck)
+        subject.startGame()
+        
+        XCTAssertFalse(subject.canDealMoreCards)
+    }
+    
+    func testCanDealMoreCardsisTrueWhenThereAreCardsToDeal() {
+        // Given a deck of 15 cards
+        let deck = prepareDeck(of: 15, including: [Card]())
+        //start game
+        let subject = GameEngine(allCards: deck)
+        subject.startGame()
+        
+        XCTAssertTrue(subject.canDealMoreCards)
+    }
     
     private func prepareDeck(of number: Int = 12, including cards: [Card]) -> [Card] {
         var deck = Card.newDeck
