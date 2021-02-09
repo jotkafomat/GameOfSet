@@ -264,6 +264,17 @@ class GameEngineTests: XCTestCase {
         XCTAssertTrue(subject.canDealMoreCards)
     }
     
+//    You will need to have a “Deal 3 More Cards” button (per the rules of Set).
+//    a. when it is touched, replace the selected cards if the selected cards make a Set (with fly-in/fly-away as described above)
+
+    
+    func testDeal3MoreCards() {
+        subject.startGame()
+        let initialNumberOfDealtCards = subject.dealtCards.count
+        subject.deal3MoreCards()
+        XCTAssertEqual(subject.dealtCards.count, initialNumberOfDealtCards + 3)
+    }
+    
     private func prepareDeck(of number: Int = 12, including cards: [Card]) -> [Card] {
         var deck = Card.newDeck
         //remove the 3 matching cards

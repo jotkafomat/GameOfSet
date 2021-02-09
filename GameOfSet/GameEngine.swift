@@ -25,7 +25,7 @@ class GameEngine: ObservableObject {
     }
     
     public func startGame() {
-        topUpDealtCardsTo12()
+        topUpDealtCards(to: 12)
     }
     
     public func touch(_ card: Card) {
@@ -34,11 +34,16 @@ class GameEngine: ObservableObject {
             deselectAllCards()
             removeAllMatched()
             // deal 3 cards if avaible
-            topUpDealtCardsTo12()
+            topUpDealtCards(to: 12)
         }
         
         toggleIsSelected(card)
         markIfMatched()
+    }
+    
+    public func deal3MoreCards() {
+        let expectedDealtCardsCount = dealtCards.count + 3
+        topUpDealtCards(to: expectedDealtCardsCount)
     }
     
     private func markIfMatched() {
@@ -63,11 +68,11 @@ class GameEngine: ObservableObject {
         allCards.removeAll(where: { $0.isMatched })
     }
     
-    private func topUpDealtCardsTo12() {
+    private func topUpDealtCards(to expectedCount: Int) {
         guard canDealMoreCards else {
             return
         }
-        while dealtCards.count != 12 {
+        while dealtCards.count != expectedCount {
             dealSingleCard()
         }
     }
