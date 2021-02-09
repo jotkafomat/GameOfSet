@@ -194,7 +194,7 @@ class GameEngineTests: XCTestCase {
         XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card2)}))
         XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card3)}))
     }
-
+    
     
     func testDealExtraThreeCardsAfterMatch() throws {
         //three matching cards
@@ -264,15 +264,39 @@ class GameEngineTests: XCTestCase {
         XCTAssertTrue(subject.canDealMoreCards)
     }
     
-//    You will need to have a “Deal 3 More Cards” button (per the rules of Set).
-//    a. when it is touched, replace the selected cards if the selected cards make a Set (with fly-in/fly-away as described above)
-
-    
     func testDeal3MoreCards() {
         subject.startGame()
         let initialNumberOfDealtCards = subject.dealtCards.count
         subject.deal3MoreCards()
         XCTAssertEqual(subject.dealtCards.count, initialNumberOfDealtCards + 3)
+    }
+    
+    func testDeal3MoreCardsWhenThereIsAMatch() {
+        
+        let card1 = Card(shape: .diamond, number: .one, color: .red, shading: .open, isDealt: true)
+        let card2 = Card(shape: .diamond, number: .two, color: .red, shading: .solid, isDealt: true)
+        let card3 = Card(shape: .diamond, number: .three, color: .red, shading: .striped, isDealt: true)
+        
+        let deck = prepareDeck(of: 15, including: [card1, card2, card3])
+        
+        let subject = GameEngine(allCards: deck)
+        
+        subject.startGame()
+        
+        //select 3 macthing cards
+        subject.touch(card1)
+        subject.touch(card2)
+        subject.touch(card3)
+        
+        //tap button deal three more cards
+        subject.deal3MoreCards()
+        
+        XCTAssertEqual(subject.dealtCards.count, 12)
+        
+        //ensure matched cards were removed
+        XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card1)}))
+        XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card2)}))
+        XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card3)}))
     }
     
     private func prepareDeck(of number: Int = 12, including cards: [Card]) -> [Card] {

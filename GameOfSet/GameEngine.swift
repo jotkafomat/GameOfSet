@@ -42,6 +42,9 @@ class GameEngine: ObservableObject {
     }
     
     public func deal3MoreCards() {
+        if selectedCards.areValidSet {
+            removeAllMatched()
+        }
         let expectedDealtCardsCount = dealtCards.count + 3
         topUpDealtCards(to: expectedDealtCardsCount)
     }
