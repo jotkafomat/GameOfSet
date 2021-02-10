@@ -299,6 +299,17 @@ class GameEngineTests: XCTestCase {
         XCTAssertNil(subject.dealtCards.first(where: { $0.matches(card3)}))
     }
     
+    func testNewGame() {
+        
+        subject.startGame()
+        
+        let originalDealtCards = subject.dealtCards
+        
+        subject.newGame()
+        XCTAssertEqual(subject.dealtCards.count, 12)
+        XCTAssertNotEqual(originalDealtCards, subject.dealtCards)
+    }
+    
     private func prepareDeck(of number: Int = 12, including cards: [Card]) -> [Card] {
         var deck = Card.newDeck
         //remove the 3 matching cards

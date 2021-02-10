@@ -28,6 +28,11 @@ class GameEngine: ObservableObject {
         topUpDealtCards(to: 12)
     }
     
+    public func newGame() {
+        allCards = Card.newDeck
+        startGame()
+    }
+    
     public func touch(_ card: Card) {
         
         if selectedCards.count > 2 {
