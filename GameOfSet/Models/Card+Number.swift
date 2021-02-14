@@ -9,10 +9,10 @@ import Foundation
 
 extension Card {
     
-    enum Number {
-        case one
-        case two
-        case three
+    enum Number: Int {
+        case one = 1
+        case two = 2
+        case three = 3
     }
 }
 
