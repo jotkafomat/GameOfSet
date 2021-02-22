@@ -10,7 +10,7 @@ import Combine
 
 class GameEngine: ObservableObject {
     
-    private var allCards: [Card]
+    @Published private var allCards: [Card]
     
     public init(allCards: [Card] = Card.newDeck) {
         self.allCards = allCards

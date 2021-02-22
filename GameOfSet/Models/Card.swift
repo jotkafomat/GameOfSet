@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Card {
+struct Card: Identifiable {
     
+    let id = UUID()
     let shape: Shape
     let number: Number
     let color: Color

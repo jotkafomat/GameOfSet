@@ -13,6 +13,9 @@ struct CardFill: Shape {
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
+        guard rect != CGRect.zero else {
+            return path
+        }
         switch shading {
         case .solid:
             path.addRect(rect)
