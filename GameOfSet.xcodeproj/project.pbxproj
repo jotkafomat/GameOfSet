@@ -12,6 +12,9 @@
 		E14F5ADC25D5B3D200D8FF16 /* CardFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F5ADB25D5B3D200D8FF16 /* CardFill.swift */; };
 		E14F5B0725D85B1A00D8FF16 /* CardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F5B0625D85B1A00D8FF16 /* CardShape.swift */; };
 		E14F5B0C25D85CE500D8FF16 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F5B0B25D85CE500D8FF16 /* CardView.swift */; };
+		E14F5B1225D9B1D700D8FF16 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F5B1125D9B1D600D8FF16 /* GridLayout.swift */; };
+		E14F5B1725D9B1FB00D8FF16 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F5B1625D9B1FB00D8FF16 /* GridView.swift */; };
+		E14F5B1C25D9B26600D8FF16 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F5B1B25D9B26600D8FF16 /* Array+Identifiable.swift */; };
 		E1910E3825C6D60700D30667 /* GameOfSetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E3725C6D60700D30667 /* GameOfSetApp.swift */; };
 		E1910E3A25C6D60700D30667 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1910E3925C6D60700D30667 /* ContentView.swift */; };
 		E1910E3C25C6D60A00D30667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1910E3B25C6D60A00D30667 /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 		E14F5ADB25D5B3D200D8FF16 /* CardFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFill.swift; sourceTree = "<group>"; };
 		E14F5B0625D85B1A00D8FF16 /* CardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardShape.swift; sourceTree = "<group>"; };
 		E14F5B0B25D85CE500D8FF16 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E14F5B1125D9B1D600D8FF16 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		E14F5B1625D9B1FB00D8FF16 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		E14F5B1B25D9B26600D8FF16 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		E1910E3425C6D60700D30667 /* GameOfSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1910E3725C6D60700D30667 /* GameOfSetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfSetApp.swift; sourceTree = "<group>"; };
 		E1910E3925C6D60700D30667 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +114,9 @@
 				E14F5ADB25D5B3D200D8FF16 /* CardFill.swift */,
 				E14F5B0625D85B1A00D8FF16 /* CardShape.swift */,
 				E14F5B0B25D85CE500D8FF16 /* CardView.swift */,
+				E14F5B1625D9B1FB00D8FF16 /* GridView.swift */,
+				E14F5B1B25D9B26600D8FF16 /* Array+Identifiable.swift */,
+				E14F5B1125D9B1D600D8FF16 /* GridLayout.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -322,16 +331,19 @@
 				E1FC1DDA25C896C1006FABAA /* Array+Card.swift in Sources */,
 				E1910E7E25C6D9A100D30667 /* Card+Shading.swift in Sources */,
 				E14F5B0C25D85CE500D8FF16 /* CardView.swift in Sources */,
+				E14F5B1C25D9B26600D8FF16 /* Array+Identifiable.swift in Sources */,
 				E1910E7925C6D97500D30667 /* Card+Color.swift in Sources */,
 				E1910E8B25C6E3A600D30667 /* GameEngine.swift in Sources */,
 				E1C0941325D0073800C5E0A4 /* Collection+IsNotEmpty.swift in Sources */,
 				E14F5B0725D85B1A00D8FF16 /* CardShape.swift in Sources */,
 				E14F5ACD25D5B12200D8FF16 /* Squiggle.swift in Sources */,
+				E14F5B1725D9B1FB00D8FF16 /* GridView.swift in Sources */,
 				E1910E6F25C6D8F900D30667 /* Card+Shape.swift in Sources */,
 				E1910E7425C6D93400D30667 /* Card+Number.swift in Sources */,
 				E1910E6625C6D8CB00D30667 /* Card.swift in Sources */,
 				E1910E3825C6D60700D30667 /* GameOfSetApp.swift in Sources */,
 				E14F5A6A25D4749900D8FF16 /* Diamond.swift in Sources */,
+				E14F5B1225D9B1D700D8FF16 /* GridLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
