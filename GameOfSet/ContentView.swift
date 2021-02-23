@@ -16,17 +16,26 @@ struct ContentView: View {
             GridView(game.dealtCards) { card in
                 CardView(card: card)
                     .onTapGesture {
-                        game.touch(card)
+                        withAnimation { game.touch(card) }
                     }
+                    .transition(
+                        AnyTransition.move(
+                            edge: Edge
+                                .allCases
+                                .randomElement()!)
+                            .animation(.spring(response: 2.5, dampingFraction: 4.6, blendDuration: 30))
+                    )
             }
             .onAppear {
-                game.startGame()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation { game.startGame() }                    
+                }
             }
             .navigationBarTitle(Text(""), displayMode: .inline)
             .navigationBarItems(
-                leading: Button(action: game.newGame,
+                leading: Button(action: { withAnimation { game.newGame() } },
                                 label: { Text("New Game") }),
-                trailing: Button(action: game.deal3MoreCards,
+                trailing: Button(action: { withAnimation {game.deal3MoreCards() }},
                                  label: { Text("Add 3 cards") })
                     .disabled(!game.canDealMoreCards)
             )
