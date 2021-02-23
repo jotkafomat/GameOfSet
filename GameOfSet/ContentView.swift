@@ -28,7 +28,7 @@ struct ContentView: View {
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    withAnimation { game.startGame() }                    
+                    withAnimation { game.startGame() }
                 }
             }
             .navigationBarTitle(Text(""), displayMode: .inline)
@@ -40,6 +40,7 @@ struct ContentView: View {
                     .disabled(!game.canDealMoreCards)
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
