@@ -107,7 +107,6 @@ struct Squiggle_Previews: PreviewProvider {
         Squiggle()
             .fill(Color.orange)
             .aspectRatio(3/2, contentMode: .fit)
-            .padding()
     }
 }
 

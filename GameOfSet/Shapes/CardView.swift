@@ -24,11 +24,10 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(card.isSelected ? Color.blue : Color.black)
                 .foregroundColor(.white)
-                .padding()
-            VStack(spacing: 4) {
+            VStack(spacing: 3) {
                 ForEach(0 ..< card.number.rawValue) { item in
                     ZStack {
                         CardFill(shading: card.shading)
@@ -36,14 +35,13 @@ struct CardView: View {
                         CardShape(shape: card.shape)
                             .stroke()
                     }
-                    
                     .foregroundColor(foregroundColor)
                     .aspectRatio(1.5, contentMode: .fit)
-                    .padding(.horizontal)
                 }
             }
-            .padding()
+            .padding(.vertical, 10)
         }
+        .padding(7)
         .aspectRatio(2/3, contentMode: .fit)
         .scaleEffect(card.isMatched ? 1.1 : 0.9)
     }
@@ -52,7 +50,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     
     static let card1 = Card(shape: .diamond, number: .one, color: .green, shading: .open, isSelected: true)
-    static let card2 = Card(shape: .oval, number: .two, color: .purple, shading: .solid, isSelected: true, isMatched: true)
+    static let card2 = Card(shape: .oval, number: .two, color: .purple, shading: .solid, isSelected: true, isMatched: false)
     static let card3 = Card(shape: .squiggle, number: .three, color: .red, shading: .striped)
     
     static var previews: some View {
