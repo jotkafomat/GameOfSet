@@ -50,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E144281C2625901B00269E5D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E14428202625931800269E5D /* GameOfSetCoverage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameOfSetCoverage.png; sourceTree = "<group>"; };
+		E14428212625931F00269E5D /* GameOfSetScreenShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameOfSetScreenShot.png; sourceTree = "<group>"; };
 		E14F5A6925D4749900D8FF16 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		E14F5ACC25D5B12200D8FF16 /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		E14F5ADB25D5B3D200D8FF16 /* CardFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFill.swift; sourceTree = "<group>"; };
@@ -124,6 +127,9 @@
 		E1910E2B25C6D60700D30667 = {
 			isa = PBXGroup;
 			children = (
+				E144281C2625901B00269E5D /* README.md */,
+				E14428202625931800269E5D /* GameOfSetCoverage.png */,
+				E14428212625931F00269E5D /* GameOfSetScreenShot.png */,
 				E1910E3625C6D60700D30667 /* GameOfSet */,
 				E1910E4825C6D60A00D30667 /* GameOfSetTests */,
 				E1910E5325C6D60A00D30667 /* GameOfSetUITests */,
